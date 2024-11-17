@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://db.onlinewebfonts.com/c/76b608d5f663dca06931a6e0da441c6d?family=Lulo+Clean+One');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-item {
+  transition: opacity 0.3s ease;
+}
+
+#ulheader:hover .nav-item:not(:hover) {
+  opacity: 0.5;
+}
+
+.loginlink {
+  @apply relative;
+}
+
+.loginlink::after {
+  @apply content-[''] w-0 bg-black h-[2px] left-0 bottom-[2px] rounded-xl absolute duration-300;
+}
+
+.loginlink:hover::after {
+  @apply w-full
+}
+
+.sectionlink {
+  @apply relative;
+}
+
+.sectionlink::after {
+  @apply content-[''] w-0 bg-white h-[2px] left-0 bottom-[2px] rounded-xl absolute duration-300;
+}
+
+.sectionlink:hover::after {
+  @apply w-full
+}
