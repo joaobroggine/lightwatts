@@ -13,8 +13,8 @@ const cards = [
   },
   {
     id: 3,
-    title: 'Notificações Personalizadas',
-    description: 'Receba alertas em tempo real sobre consumo excessivo e dicas personalizadas para otimizar o uso de energia, ajudando a reduzir custos.',
+    title: 'Simplicidade para Todos',
+    description: 'Nosso layout foi projetado para ser simples, prático e eficiente! Não se preocupe em tentar entender todos os detalhes; apenas comece a usar e veja como ele pode transformar sua experiência de forma incrível.',
   },
 ];
 

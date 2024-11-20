@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Sidebar = ({ setView, hasData }: { setView: (view: string) => void, hasData: boolean }) => {
+const Sidebar = ({ setView }: { setView: (view: string) => void }) => {
   return (
     <div className="w-1/3 flex justify-center border-r border-black min-h-screen p-4 bg-white">
       <div className="h-full flex flex-col justify-start items-center space-y-6">

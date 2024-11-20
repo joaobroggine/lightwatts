@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Sidebar from "@/components/sidebar";
+import { useCallback } from "react";
 
 interface Eletrodomestico {
   marca: string;
@@ -117,15 +118,25 @@ const EletrodomesticosPage = () => {
     setSelectedId(null);
   };
 
-  const loadSelectedProduct = (id: number) => {
+// Função com useCallback para manter a referência
+const loadSelectedProduct = useCallback(
+  (id: number) => {
     const selectedProduct = eletrodomesticos.find((prod) => prod.id === id);
     if (selectedProduct) {
-
       setMarca(selectedProduct.marca);
       setTipo(selectedProduct.tipo);
-      setHorasDia(String(selectedProduct.horasDia)); // Garantir que seja uma string
+      setHorasDia(String(selectedProduct.horasDia));
     }
-  };
+  },
+  [eletrodomesticos] // Dependência necessária
+);
+
+useEffect(() => {
+  if (selectedId !== null) {
+    loadSelectedProduct(selectedId);
+  }
+}, [selectedId, loadSelectedProduct]);
+
 
   useEffect(() => {
     if (selectedId !== null) {
@@ -147,7 +158,7 @@ const EletrodomesticosPage = () => {
 
   return (
     <div className="flex flex-col md:flex-row text-black max-w-screen-xl mx-auto bg-white">
-      <Sidebar setView={setView} hasData={false} />
+      <Sidebar setView={setView} />
 
       <div className="flex-1 p-6 bg-white">
         <div className="flex justify-center items-center h-full">
