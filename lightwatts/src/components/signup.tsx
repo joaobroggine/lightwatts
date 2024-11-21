@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, ChangeEvent } from "react";
+import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
 export default function SignupTemplate() {
@@ -25,22 +25,20 @@ export default function SignupTemplate() {
       return;
     }
 
+    setError(null); // Limpa erros antes de prosseguir
+
     const userData = { nome, email, password };
     setLoading(true);
 
     try {
-      // Armazenar os dados no localStorage
       localStorage.setItem("user", JSON.stringify(userData));
-
       setLoading(false);
-      setError(null);
-
-      // Redirecionar para a página de login
       router.push("/auth/login");
     } catch (error) {
-      setError("Erro ao salvar os dados. Tente novamente.");
+      console.error("Erro ao salvar os dados no localStorage:", error); // Log detalhado para depuração
+      setError("Erro ao salvar os dados. Tente novamente."); // Mensagem genérica para o usuário
       setLoading(false);
-    }
+    }   
   };
 
   return (
@@ -56,10 +54,10 @@ export default function SignupTemplate() {
               placeholder="Digite seu nome"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
+              required
               className="mt-1 block w-full px-4 py-2 border border-black text-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
-
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-black">E-mail</label>
             <input
@@ -68,10 +66,10 @@ export default function SignupTemplate() {
               placeholder="Digite seu e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
               className="mt-1 block w-full px-4 py-2 border border-black text-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
-
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-black">Senha</label>
             <input
@@ -80,10 +78,10 @@ export default function SignupTemplate() {
               placeholder="Digite sua senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
               className="mt-1 block w-full px-4 py-2 border border-black text-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
-
           <div>
             <label htmlFor="confirmPassword" className="block text-sm font-medium text-black">Confirmar Senha</label>
             <input
@@ -92,17 +90,17 @@ export default function SignupTemplate() {
               placeholder="Confirme sua senha"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              required
               className="mt-1 block w-full px-4 py-2 border border-black text-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
-
           {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
-
           <div>
             <button
               type="submit"
               className="w-full py-2 bg-black text-white font-bold rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black"
               disabled={loading}
+              aria-busy={loading}
             >
               {loading ? "Cadastrando..." : "Cadastrar"}
             </button>
