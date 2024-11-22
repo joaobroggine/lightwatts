@@ -58,7 +58,6 @@ export default function Home() {
         <Image className="w-full lg:w-auto mt-8 lg:mt-0 lg:mr-24" src="/img/tomada.jpg" alt="Tomada" width={400} height={300} priority
         />
       </section>
-
       {/* Section de Pendência */}
       <section className="flex flex-col lg:flex-row items-center justify-start lg: bg-black opacity-90 p-8 mt-16 space-y-8 lg:space-y-0 lg:space-x-10">
         <Image className="w-full lg:w-auto lg:mr-auto" src="/img/girl_in_phone.jpg" alt="Garota no celular" width={400} height={300} priority
