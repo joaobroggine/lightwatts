@@ -7,7 +7,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
-      {/* Header */}
       <Header />
 
       {/* Hero Section */}
@@ -80,10 +79,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Card Slider */}
       <CardSlider />
 
-      {/* Footer */}
       <Footer />
     </div>
   );
