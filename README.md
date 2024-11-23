@@ -33,6 +33,8 @@ O **LightWatts** é uma solução desenvolvida para ajudar usuários a gerenciar
 
 O repositório do código Java para o processamento de dados e geração de relatórios pode ser acessado aqui.
 
+https://github.com/laviniapark/GS2-2024-JAVA
+
 
 
 
